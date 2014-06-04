@@ -1,0 +1,4 @@
+en:
+  devise:
+    failure:
+      deactivated: "Account has been deactivated."

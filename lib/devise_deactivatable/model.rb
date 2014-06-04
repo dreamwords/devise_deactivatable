@@ -24,7 +24,7 @@ module Devise
       # Overwrites invalid_message from Devise::Models::Authenticatable to define
       # the correct reason for blocking the sign in.
       def inactive_message
-        deactivated? ? 'The account has already been deactivated' : super
+        deactivated? ? :deactivated : super
       end
     end
   end
