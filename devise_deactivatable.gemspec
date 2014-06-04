@@ -12,5 +12,9 @@ Gem::Specification.new do |s|
   s.summary      = "Deactivate support for Devise"
   s.description  = "Deactivate support for Devise."
   s.license      = 'MIT'
+  
+  s.files        = `git ls-files {app,config,lib}`.split("\n") + %w[LICENSE README.md]
   s.require_path = "lib"
+  
+  s.add_runtime_dependency('devise', '>= 3.0.0')
 end
