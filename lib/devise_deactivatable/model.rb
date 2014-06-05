@@ -1,6 +1,12 @@
 module Devise
   module Models
     module Deactivatable
+      extend ActiveSupport::Concern
+      
+      included do
+        scope :deactivated, -> { where("'deactivated_at' is not NULL") }
+      end
+      
       def self.required_fields(klass)
         [:deactivated_at]
       end
@@ -25,6 +31,10 @@ module Devise
       # the correct reason for blocking the sign in.
       def inactive_message
         deactivated? ? :deactivated : super
+      end
+      
+      module ClassMethods
+        
       end
     end
   end
