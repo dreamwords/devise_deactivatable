@@ -1,9 +1,14 @@
 module Devise
   module Models
     module Deactivatable
+      extend ActiveSupport::Concern
+      
+      included do
+        scope :deactivated, -> { where("'deactivated_at' is not NULL") }
+      end
+      
       def self.required_fields(klass)
-        attributes = [:deactivated_at]
-        attributes
+        [:deactivated_at]
       end
       
       # Overwrites active_for_authentication? from Devise::Models::Activatable for deactivate purposes
@@ -14,7 +19,10 @@ module Devise
 
       def deactivate!
         self.deactivated_at = Time.now
-        save!(:validate => false)
+        save(validate: false) or raise "Devise deactivatable could not save #{inspect}." \
+          "Please make sure a model using deactivatable can be saved when deactivating."
+
+        after_deactivate
       end      
 
       def deactivated?
@@ -25,6 +33,25 @@ module Devise
       # the correct reason for blocking the sign in.
       def inactive_message
         deactivated? ? :deactivated : super
+      end
+      
+      protected
+      
+      # A callback initiated after successfully deactivating. This can be
+      # used to insert your own logic that is only run after the user successfully
+      # deactivated.
+      #
+      # Example:
+      #
+      #   def after_deactivated
+      #     # remove oauth tokens
+      #   end
+      #      
+      def after_deactivate
+      end
+      
+      module ClassMethods
+        
       end
     end
   end
