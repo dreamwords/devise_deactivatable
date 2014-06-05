@@ -2,8 +2,7 @@ module Devise
   module Models
     module Deactivatable
       def self.required_fields(klass)
-        attributes = [:deactivated_at]
-        attributes
+        [:deactivated_at]
       end
       
       # Overwrites active_for_authentication? from Devise::Models::Activatable for deactivate purposes
@@ -14,7 +13,8 @@ module Devise
 
       def deactivate!
         self.deactivated_at = Time.now
-        save!(:validate => false)
+        save(validate: false) or raise "Devise deactivatable could not save #{inspect}." \
+          "Please make sure a model using deactivatable can be saved when deactivating."        
       end      
 
       def deactivated?
