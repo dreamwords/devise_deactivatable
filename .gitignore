@@ -16,4 +16,4 @@ test/version_tmp
 tmp
 *.sqlite
 .ruby-gemset
-ruby-version
+.ruby-version
