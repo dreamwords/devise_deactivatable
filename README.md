@@ -29,7 +29,36 @@ class DeviseCreateUsers < ActiveRecord::Migration
 end
 ```
 
-And you're ready to go!
+### Model
+
+#### Deactivate
+
+```ruby
+  u.deactivated?
+  u.deactivate!
+```
+
+#### Scope
+
+```ruby
+  # scope
+  User.deactivated
+```
+
+#### Customerize after_deactivate
+
+```ruby
+class User
+  def after_deactivate
+    # do something
+  end
+end
+```
+
+### Controller
+
+You can send post request to '/users/deactivate' to deactivate the user. You can also customerize the controller.
+
 
 ## Contributing
 
