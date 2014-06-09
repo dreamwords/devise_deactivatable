@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.authors      = ["Elan Meng"]
   s.email        = ["dreamwords@gmail.com"]
-  s.homepage     = "https://github.com/scambra/devise_invitable"
+  s.homepage     = "https://github.com/dreamwords/devise_deactivatable"
   s.summary      = "Deactivate support for Devise"
   s.description  = "Deactivate support for Devise."
   s.license      = 'MIT'
