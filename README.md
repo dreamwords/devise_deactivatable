@@ -57,7 +57,7 @@ end
 
 ### Controller
 
-You can send post request to '/users/deactivate' to deactivate the user. You can also customerize the controller.
+You can send post request to '/users/deactivate' to deactivate the user. You can also customize the controller.
 
 
 ## Contributing
