@@ -69,4 +69,4 @@ You can send post request to '/users/deactivate' to deactivate the user. You can
 
 ## License
 
-Apache License version 2. Copyright 2012-2014 Plataformatec http://plataformatec.com.br
+Apache License version 2.
