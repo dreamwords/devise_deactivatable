@@ -4,7 +4,7 @@ module Devise
       extend ActiveSupport::Concern
       
       included do
-        scope :deactivated, -> { where.not(deactivated: nil) }
+        scope :deactivated, -> { where.not(deactivated_at: nil) }
       end
       
       def self.required_fields(klass)
